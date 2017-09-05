@@ -1,2 +1,2 @@
 # LearningFun
-Just for learning
+Just for learning Java!
