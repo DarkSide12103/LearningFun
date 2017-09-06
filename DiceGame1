@@ -1,0 +1,66 @@
+import java.util.*;
+public class DiceG {
+	
+	static int money = 1000;
+	static String userName;
+	static int betNum;
+	static int betMoney;
+	
+	static Scanner in = new Scanner(System.in);
+	static Random random = new Random();
+	
+
+	public static void main(String[] args) {
+		
+		System.out.println("Welcome, please enter your username");
+		userName = in.nextLine();
+		System.out.println("Welcome " + userName + ", what number do you want to bet on? (1-10)");
+		betNum = in.nextInt();
+		System.out.println("How much do you want to bet?");
+		betMoney = in.nextInt();
+		while(betMoney > money) {
+			
+			System.out.println("Sorry, you dont seem to have enough money to bet that much, you only have $" + money + " Please enter another bet");
+			betMoney = in.nextInt();
+			
+		}
+		
+		int dice;
+		dice = random.nextInt(10)+1;
+		
+		
+		while(betNum != dice) {
+			
+			if(betNum != dice) {
+				System.out.println("Wrong guess, you have lost $" + betMoney);
+				money-=betMoney;
+				
+				if(money <= 0) {
+					System.out.println("You are broke!");
+					System.exit(0);
+				}
+				
+				if(money > 0) {
+					dice = random.nextInt(10)+1;
+					System.out.println("You now have $" + money + " in your bank");
+					System.out.println("To bet again just enter another number to bet on(1-10)");
+					betNum = in.nextInt();
+				}
+				
+
+		}
+		
+		if(betNum == dice) {
+			System.out.println("Congradulations! You have earned $" + betMoney*5 + "!");
+			money+=betMoney*5;
+			dice = random.nextInt(10)+1;
+			System.out.println("You have $" + money + " in your bank!");
+			System.out.println("To bet again just enter another number to bet on(1-10)");
+			betNum = in.nextInt();
+		}
+		
+
+	}
+
+  }
+}
