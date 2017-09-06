@@ -16,6 +16,14 @@ public class DiceG {
 		userName = in.nextLine();
 		System.out.println("Welcome " + userName + ", what number do you want to bet on? (1-10)");
 		betNum = in.nextInt();
+		
+		while(betNum > 10 | betNum < 1) {
+			System.out.println("Too high or low of a number, only 1-10. Pick again");
+			betNum = in.nextInt();
+		}
+		
+		
+		
 		System.out.println("How much do you want to bet?");
 		betMoney = in.nextInt();
 		while(betMoney > money) {
